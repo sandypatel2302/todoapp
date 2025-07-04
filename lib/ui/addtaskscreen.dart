@@ -5,6 +5,7 @@ import 'package:todoapp/blocs/home/homeevent.dart';
 import 'package:todoapp/models/taskmodel.dart';
 import 'package:todoapp/utils/constants.dart';
 import 'package:todoapp/utils/widgets/custombutton.dart';
+import 'package:todoapp/utils/widgets/customtext.dart';
 
 class Addtaskscreen extends StatefulWidget {
   const Addtaskscreen({super.key});
@@ -29,9 +30,10 @@ class _AddtaskscreenState extends State<Addtaskscreen> {
         ),
         backgroundColor: Colors.white,
         body: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
-            spacing: 10,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 15,
             children: [
               TextFormField(
                 controller: titleController,
@@ -40,6 +42,7 @@ class _AddtaskscreenState extends State<Addtaskscreen> {
                   hintText: Constants.titleHelp,
                 ),
               ),
+              Customtext(text: Constants.priority),
               ValueListenableBuilder(
                 valueListenable: initpriority,
                 builder: (context, val, child) {
@@ -57,6 +60,7 @@ class _AddtaskscreenState extends State<Addtaskscreen> {
                   );
                 },
               ),
+              Customtext(text: Constants.category),
               ValueListenableBuilder(
                 valueListenable: initcategory,
                 builder: (context, val, child) {
@@ -82,7 +86,7 @@ class _AddtaskscreenState extends State<Addtaskscreen> {
                 ),
                 keyboardType: TextInputType.number,
               ),
-              Custombutton(text: Constants.submit, voidCallback: submit),
+              Center(child: Custombutton(text: Constants.submit, voidCallback: submit)),
             ],
           ),
         ),
